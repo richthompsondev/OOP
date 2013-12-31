@@ -3,7 +3,7 @@ package com.jony;
 public class InternalSystem {
     private int password = 2222;
 
-    public void autentica(Authentication auth){
+    public void authenticate(Authentication auth){
 
         boolean authenticated = auth.authenticate(this.password);
 

@@ -1,16 +1,17 @@
 package com.jony;
 
-public abstract class Account {
-    Client client = new Client(); //assuming that each new account creates a new client
+public abstract class Account implements Authentication{
+    Client client;
     private int accountNumber;
     private double balance;
     private double limit;
     private double loanTotal;
     private static int accountsTotal;
-    private int password;
+    private AuthenticationUtil authenticator;
 
     // Constructors
     public Account(String name, int accountNumber, double balance, double limit) {
+        this.client = new Client(); //assuming each new account creates a new client
         this.client.setName(name);
         this.accountNumber = accountNumber;
         if(balance >= 0){
@@ -103,16 +104,14 @@ public abstract class Account {
 
     }
 
-    public boolean authenticate(int password) {
-        if (this.password == password) {
-            return true;
-        } else {
-            return false;
-        }
+    @Override
+    public void setPassword(int password) {
+        this.authenticator.setPassword(password);
     }
 
-    public void setPassword(int password) {
-        this.password = password;
+    @Override
+    public boolean authenticate(int password) {
+        return this.authenticator.authenticate(password);
     }
 }
 /*
