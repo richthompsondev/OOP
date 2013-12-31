@@ -1,10 +1,12 @@
 print("Imprimir sem quebra de linha", end='')
-print("o pedido para inserir dois números")
+print(" o pedido para inserir dois números")
 
 a, b = input('Bora pow\n').split()  # Ler vários números na mesma linha
 
 a = float(a)  # No Python a entrada por comando input é sempre em string, portanto se precisa converter para outro tipo
 b = float(b)
+
+a2, b2 = map(int, input('Bora pow\n').split())  # É mais pythonico usar map function
 
 print(f"{a / b:.2f}")
 # print("{:.2f}".format(a / b)) old form
