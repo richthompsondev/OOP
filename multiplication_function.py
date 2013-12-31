@@ -1,4 +1,6 @@
-# Make a sum function and use it to make a multiplication function. 計算
+# Make a sum function and use it to make a multiplication function. 計算「けいさん」
+#　+たす。-ひく。*かける。/わる。
+
 def sum(a=0, b=0): # たす
     return a + b
 
