@@ -1,5 +1,8 @@
-package class2;
-
+package classes;
+/*
+ * Faça um programa que receba o nome e a idade de umas 5 pessoas 
+ * e mostre o nome e a idade da pessoa mais nova e da pessoa mais velha.
+ */
 import java.util.Scanner;
 
 public class OldestYoungest {
@@ -30,7 +33,7 @@ public class OldestYoungest {
 			}
 		}
 		
-		System.out.println("The yougest person is " +youngestAgeName+", " +youngestAge+ " years old.");
+		System.out.println("The youngest person is " +youngestAgeName+", " +youngestAge+ " years old.");
 		System.out.println("The oldest person is " +oldestAgeName+", " +oldestAge+ " years old.");
 
 		input.close();
