@@ -63,7 +63,7 @@ public class Main {
         //specialClient.setBirth("10/30/1988");
         specialClient.setAddress("touri", "123", null, "machi", "Tokyo", "60050100");
         specialClient.setPassword(1234);
-        CheckingAccount checkingAccount = new CheckingAccount(specialClient, 3124, 223334, 0);
+        CheckingAccount checkingAccount = new CheckingAccount(specialClient, 3124, 223334, 1000);
         specialClient.setCheckingAccount(checkingAccount);
 
         LowIncomeClient lowIncomeClient  = new LowIncomeClient();
@@ -77,27 +77,34 @@ public class Main {
     }
 
     public static int login() {
-        try(Scanner input = new Scanner(System.in)){
-            String id = null;
-            String senha = null;
-            System.out.println("Digite o ID:");
-            id = input.nextLine();
-            System.out.println("Digite a senha:");
-            senha = input.nextLine();
-            if(id != specialClient.getName() && senha != specialClient.getPassword())
-                opt2 = 1;
-            else if(id != commonClient.getName() && senha != commonClient.getPassword())
-                opt2= 2;
-            else if(id != lowIncomeClient.getName() && senha != lowIncomeClient.getPassword())
-                opt2 =3;
-            else{
-                System.out.println("Id ou Senha incorreto.");
-                return login();
+        for(int trial = 0; trial <= 5; trial++){
+            try(Scanner input = new Scanner(System.in)){
+                //InternalSystem internalSystem = new InternalSystem();
+                //internalSystem.authenticate();
+                System.out.println("Account number: ");
+                String accountNumberInput = input.nextLine();
+                System.out.println("Password: ");
+                String passwordInput = input.nextLine();
+                if(id != specialClient.getName() && senha != specialClient.getPassword())
+                    opt2 = 1;
+                else if(id != commonClient.getName() && senha != commonClient.getPassword())
+                    opt2= 2;
+                else if(id != lowIncomeClient.getName() && senha != lowIncomeClient.getPassword())
+                    opt2 =3;
+                else{
+                    System.out.println("Id ou Senha incorreto.");
+                    return login();
+                }
+                return 0;
+            }catch (InputMismatchException exception) {
+                System.out.println("Incompatibilidade de entrada.");
             }
-            return 0;
-        }catch (InputMismatchException exception) {
-            System.out.println("Incompatibilidade de entrada.");
         }
+        return 0;
+    }
+    public static int lerTeclado() throws NumberFormatException {
+        Scanner s = new Scanner(System.in);
+        return Integer.parseInt(s.nextLine());
     }
 
     public static int menu1() {
