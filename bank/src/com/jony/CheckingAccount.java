@@ -15,6 +15,9 @@ public class CheckingAccount extends Account implements Taxable {
     public CheckingAccount(Client client, int agency, int accountNumber, double balance, double limit) {
         super(client, agency, accountNumber, balance, limit);
     }
+    public CheckingAccount(Client client, int agency, int accountNumber, double balance) {
+        super(client, agency, accountNumber, balance);
+    }
 
     @Override
     synchronized void withdrawValue(double value) throws InsufficientBalanceException {

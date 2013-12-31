@@ -9,7 +9,7 @@ import java.util.ArrayList;
  * Main class simulating a menu
  *
  * @author Jonatas Dourado
- * @version 0.1
+ * @version 0.2
  */
 
 public class Main {
