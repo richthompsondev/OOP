@@ -21,7 +21,6 @@ public abstract class Account implements Authentication {
     private double balance;
     private double limit;
     private double loanTotal;
-    private static int accountsTotal;
     private AuthenticationUtil authenticator;
 
     // Constructors
@@ -36,10 +35,9 @@ public abstract class Account implements Authentication {
             this.balance = 0;
             throw new IllegalArgumentException("Invalid balance");
         }
-        this.client = new SpecialClient(); //assuming each new account creates a new client
+        this.client = client; //assuming each new account creates a new client
         this.accountNumber = accountNumber;
         this.balance = balance;
-        Account.accountsTotal++;
     }
 
     public Account(Client client, int agency, int accountNumber, double balance) {
