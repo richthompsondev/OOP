@@ -1,4 +1,4 @@
-# GCD of more than two (or array) numbers
+# GCD (MDC) of more than two (or array) numbers
 # Function implements the Euclidian algorithm to find highest common factor of two number
 def find_gcd(a, b):
     while(b):
@@ -53,7 +53,7 @@ g, x, y = gcd_extended(a, b)
 print("gcd(", a, ",", b, ") = ", g)
 
 
-# Function to return LCM of two numbers
+# Function to return LCM (MMC) of two numbers
 def lcm(a, b):
     return (a / gcd(a, b)) * b
 
