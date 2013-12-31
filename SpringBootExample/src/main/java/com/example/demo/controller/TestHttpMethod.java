@@ -15,7 +15,7 @@ import com.example.demo.pojo.Person;
  * If the age is not valid, it returns "Age should be numeric" and status INTERNAL_SERVER_ERROR.
  * If there is no age, then returns only name and last name and status OK.
  */
-@RestController
+@RestController // Retorna o objeto, e os dados do objeto são gravados na resposta HTTP como JSON ou XML
 public class TestHttpMethod {
 	// Test on postman - http://localhost:8080/person/fn/Jonatas/ln/Dourado?age=29
 	@GetMapping("/person/fn/{firstName}/ln/{lastName}")
