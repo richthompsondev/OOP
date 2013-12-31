@@ -1,6 +1,7 @@
 package com.jony;
 import com.jony.model.*;
 
+import java.io.*;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 import java.util.ArrayList;
@@ -24,6 +25,7 @@ public class Main {
             System.out.println("Connection error");
         }
     }
+    static Scanner input = new Scanner(System.in);
     static CheckingAccount checkingAccount;
     static SavingsAccount savingsAccount;
     static SpecialClient specialClient;
@@ -36,7 +38,16 @@ public class Main {
     static ArrayList<Double> bankStatement = new ArrayList<Double>();
     static ArrayList<Integer> bankStatement2 = new ArrayList<Integer>();
 
-    public static int database() {
+    public static int database() throws IOException {
+        InputStream dataBase = new FileInputStream("database.txt");
+        Reader dataBaseStream = new InputStreamReader(dataBase);
+        BufferedReader dataBaseBuffer = new BufferedReader(dataBaseStream);
+        String line = dataBaseBuffer.readLine();
+        while (line != null) {
+            System.out.println(line);
+            line = dataBaseBuffer.readLine();
+        }
+        dataBaseBuffer.close();
         specialClient  = new SpecialClient();
         specialClient.setName("階戸瑠李");
         specialClient.setCpf("01234567899");
@@ -61,7 +72,7 @@ public class Main {
 
     public static int login() {
         for(int trial = 0; trial <= 5; trial++){
-            try(Scanner input = new Scanner(System.in)){
+            try{
                 //InternalSystem internalSystem = new InternalSystem();
                 //internalSystem.authenticate();
                 System.out.println("Account number: ");
@@ -75,17 +86,20 @@ public class Main {
                 else if(accountNumberInput != lowIncomeClient.getCheckingAccount().getAccountNumber() && lowIncomeClient.authenticate(passwordInput))
                     opt2 =3;
                 else{
-                    System.out.println("Id ou Senha incorreto.");
+                    System.out.println("Agência ou Senha incorreto.");
                     return login();
                 }
                 return 0;
-            }catch (InputMismatchException exception) {
+            }catch (InputMismatchException | NumberFormatException exception) {
                 System.out.println("Incompatibilidade de entrada.");
+            }finally {
+                input.close();
             }
         }
         return 0;
     }
-    public static int lerTeclado() throws NumberFormatException {
+    // Good performance running large loop and used for read a string of numbers.
+    public static int readInput() throws NumberFormatException {
         Scanner s = new Scanner(System.in);
         return Integer.parseInt(s.nextLine());
     }

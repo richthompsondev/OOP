@@ -1,6 +1,5 @@
 package com.jony.model;
 
-import com.jony.model.Account;
 /**
  * Class representing a bank saving account
  *
@@ -9,7 +8,7 @@ import com.jony.model.Account;
  */
 public class SavingsAccount extends Account {
 
-    public SavingsAccount(Client client, int agency, int accountNumber, double balance, double limit) {
+    public SavingsAccount(Client client, int agency, int accountNumber, double balance) {
         super(client, agency, accountNumber, balance, limit); // Can't creat construct in child class without it
     }
 
