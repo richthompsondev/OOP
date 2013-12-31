@@ -1,6 +1,10 @@
-package com.jony;
+package com.jony.model;
 
-public abstract class Account implements Authentication{
+import com.jony.Authentication;
+import com.jony.AuthenticationUtil;
+import com.jony.InsufficientBalanceException;
+
+public abstract class Account implements Authentication {
     Client client;
     private int accountNumber;
     private double balance;
@@ -63,25 +67,19 @@ public abstract class Account implements Authentication{
         return true;
     }
 
-    synchronized boolean withdrawValue(double value) {
-        if (this.balance >= value) {
-            this.balance -= value;
-            System.out.println("Saque realizado. Saldo atual: " + this.balance);
-            return true;
+    synchronized void withdrawValue(double value) throws InsufficientBalanceException{
+        if (this.balance < value) {
+            throw new InsufficientBalanceException("Saldo insuficiente.");
         }
-        System.out.println("Erro. Saldo insuficiente.");
+        this.balance -= value;
+        System.out.println("Saque realizado. Saldo atual: " + this.balance);
         // IllegalArgumentException error = new IllegalArgumentException()
         // throw error
-        return false;
     }
 
-    synchronized boolean transferValue(Account destination, double value) {
-        if (this.withdrawValue(value)) {
-            destination.depositValue(value);
-            return true;
-        }
-        System.out.println("Erro. Saldo insuficiente para transferência.");
-        return false;
+    synchronized void transferValue(Account destination, double value) throws InsufficientBalanceException{
+        this.withdrawValue(value);
+        destination.depositValue(value);
     }
 
     synchronized boolean accountsLoan(double value) {
