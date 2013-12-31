@@ -36,7 +36,7 @@ public abstract class Account implements Authentication {
             throw new IllegalArgumentException("Invalid balance");
         }
         this.client = client; //assuming each new account creates a new client
-        this.agency = agency
+        this.agency = agency;
         this.accountNumber = accountNumber;
         this.balance = balance;
     }
