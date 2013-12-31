@@ -1,11 +1,11 @@
 
 
 /**
- * Empregado È uma classe abstrata. Todos os empregados tÍm um primeiro_nome,
- * ultimo_nome, e um sal·rio. Cada empregado pode calcular o seu sal·rio.
- * Todavia, o mecanismo para calcular o sal·rio depende do tipo de empregado.
+ * Empregado √© uma classe abstrata. Todos os empregados t√™m um primeiro_nome,
+ * ultimo_nome, e um sal√°rio. Cada empregado pode calcular o seu sal√°rio.
+ * Todavia, o mecanismo para calcular o sal√°rio depende do tipo de empregado.
  * Assim, cada classe especializada deve definir, o modo como calcular o seu
- * sal·rio.
+ * sal√°rio.
  */
 public abstract class Empregado {
 	private String primeiro_nome;
