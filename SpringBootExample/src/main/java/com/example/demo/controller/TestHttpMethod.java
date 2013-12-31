@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.example.demo.pojo.Person;
 /*
  * This class is taking name, last name and age and returning in a string.
  * If the age is not valid, it returns "Age should be numeric" and status INTERNAL_SERVER_ERROR.
@@ -17,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class TestHttpMethod {
 	// Test on postman - http://localhost:8080/person/fn/Jonatas/ln/Dourado?age=29
 	@GetMapping("/person/fn/{firstName}/ln/{lastName}")
-	public ResponseEntity<String> getCustomMessage(
+	public ResponseEntity<Person> getCustomMessage(
 			@PathVariable (value = "firstName") String fName,
 			@PathVariable (value = "lastName") String lName,
 			@RequestParam Optional<String> age
@@ -28,12 +30,12 @@ public class TestHttpMethod {
 				personAge = Integer.parseInt(age.get());
 			} catch (Exception e) {
 				return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-						.body("Age should be numeric");
+						.body(null);
 			}
-			return ResponseEntity.status(HttpStatus.OK)
-					.body("Your name is "+fName+" "+lName+ " and age is "+personAge);
+			Person person = new Person(fName, lName, personAge);
+			return ResponseEntity.status(HttpStatus.OK).body(person);
 		}
-		return ResponseEntity.status(HttpStatus.OK)
-				.body("Your name is "+fName+" "+lName);
+		Person person = new Person(fName, lName);
+		return ResponseEntity.status(HttpStatus.OK).body(person);
 	}
 }
