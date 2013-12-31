@@ -26,7 +26,7 @@ prime_factors(n)
 
 
 print()
-# Python3 program to find prime factorization of a number n in O(Log n) time with pre computation allowed.
+# Python3 program, sieve of Eratosthenes algorithm, to find prime factorization of a number n in O(Log n) time with pre computation allowed.
 # Works well for n up to the order of 10^7. Beyond this there will be memory issues.
 # The above method is overall better
 MAXN = 100001
