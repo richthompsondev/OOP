@@ -2,11 +2,11 @@ package com.jony;
 
 public class Client {
     Address address = new Address();
-    private String name;
-    private String password;
+    private String name, password;
     private String cpf; // Social Security or National Insurance Number
-    private int age;
     private char sex;
+    private int age;
+    private int priority;
     private CheckingAccount checkingAccount;
     private SavingsAccount savingsAccount;
 
@@ -40,6 +40,14 @@ public class Client {
 
     public void setAge(int age) {
         this.age = age;
+    }
+
+    public int getPriority() {
+        return priority;
+    }
+
+    public void setPriority(int priority) {
+        this.priority = priority;
     }
 
     public char getSex() {

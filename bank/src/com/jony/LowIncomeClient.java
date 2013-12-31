@@ -1,10 +1,9 @@
 package com.jony;
 
 public class LowIncomeClient extends Client{
-    public SavingsAccount getSavingsAccount() {
-        return null;
-    }
-    public void setSavingsAccount(SavingsAccount savingsAccount){
+    static Client client  = new Client();
 
+    public void setLowIncome() {
+        client.setPriority(1);
     }
 }
