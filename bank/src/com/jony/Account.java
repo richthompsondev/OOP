@@ -15,7 +15,7 @@ import java.util.Objects;
  */
 public abstract class Account implements Authentication, Comparable<Account> {
     private Priority priority;
-    private Client client;
+    private Client holder;
     private int agency;
     private int accountNumber;
     private double balance;
@@ -35,7 +35,7 @@ public abstract class Account implements Authentication, Comparable<Account> {
             this.balance = 0;
             throw new IllegalArgumentException("Invalid balance");
         }
-        this.client = client; //assuming each new account creates a new client
+        this.holder = client; //assuming each new account creates a new client
         this.agency = agency;
         this.accountNumber = accountNumber;
         this.balance = balance;
@@ -46,8 +46,8 @@ public abstract class Account implements Authentication, Comparable<Account> {
         this(client, agency, accountNumber, balance, 1000);
     }
 
-    public String getHolderName() {
-        return client.getName();
+    public Client getHolderName() {
+        return this.holder;
     }
 
     public int getAccountNumber() {
