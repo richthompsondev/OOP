@@ -1,4 +1,6 @@
 package com.jony;
+import com.jony.model.*;
+
 import java.util.Scanner;
 import java.util.ArrayList;
 
@@ -176,6 +178,21 @@ public class Main {
     }
 
     public static void main(String[] args) {
+        try(Connection connection = new Connection() ){
+            connection.readData();
+        } catch (IllegalStateException exception) {
+            System.out.println("Connection error");
+        }
+        /* Connection connection = null;
+        try{
+            connection = new Connection();
+            connection.readData();
+            connection.close();
+        } catch(IllegalStateException exception){
+            System.out.println("Connection error");
+        } finally { // Will always be executed
+            connection.close();
+        }*/
         database();
         login();
         menu1();
@@ -188,7 +205,12 @@ public class Main {
         System.out.println("Saldo: " + acc1.getBalance());
 
         acc1.depositValue(20);
-        acc1.withdrawValue(20.50);
+        try {
+            acc1.withdrawValue(20.50);
+        } catch(InsufficientBalanceException exception){
+            System.out.println(exception.getMessage());
+        }
+
 
         System.out.println();
         System.out.println("Nome: " + acc2.client.getName());
