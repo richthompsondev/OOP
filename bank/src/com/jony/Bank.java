@@ -1,4 +1,7 @@
 package com.jony.model;
+
+import java.util.ArrayList;
+
 /**
  * Class representing a bank
  *
@@ -6,21 +9,20 @@ package com.jony.model;
  * @version 0.1
  */
 public class Bank {
-    private String name;
-    private int quantity;
-    int accounts[] = new int[quantity];
+    ArrayList<Account> accountList = new ArrayList<Account>();
 
-    //Constructor
-    public Bank(String name, int quantity) {
-        this.name = name;
-        this.quantity = quantity;
+    public int searchAccount(Account account) {
+        return accountList.indexOf(account);
     }
-
-    void searchAccount(int accountNumber) {
-
+    public void insertAccount(Account account) {
+        accountList.add(account);
     }
-
-    void insertAccount(int accountNumber, String owner) {
-
+    public void listAccounts() {
+        for(Account account : accountList) {
+            System.out.println(account);
+        }
+    }
+    public boolean contaisAccount(Account account) {
+        return accountList.contains(account);
     }
 }
