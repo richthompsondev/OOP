@@ -5,7 +5,7 @@ import java.util.Calendar;
 public abstract class Person {
     Address address = new Address();
     private String name;
-    private String cpf; // Social Security or National Insurance Number
+    private long cpf; // Social Security or National Insurance Number
     private char sex;
     private Calendar birth = Calendar.getInstance();
 
@@ -17,11 +17,11 @@ public abstract class Person {
         this.name = name;
     }
 
-    public String getCpf() {
+    public long getCpf() {
         return cpf;
     }
 
-    public void setCpf(String cpf) {
+    public void setCpf(long cpf) {
         this.cpf = cpf;
     }
 
