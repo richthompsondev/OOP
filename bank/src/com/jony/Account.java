@@ -1,16 +1,41 @@
 package com.jony;
 
 public class Account {
-    Client client = new Client();
+    Client client = new Client(); //assuming that each new account creates a new client
     private int accountNumber;
     private double balance;
     private double limit;
     private double loanTotal;
+    private static int accountsTotal;
 
-    //Constructor
-    public Account(String name, int accountNumber, double balance) {
+    // Constructors
+    public Account(String name, int accountNumber, double balance, double limit) {
         this.client.setName(name);
         this.accountNumber = accountNumber;
+        if(balance >= 0){
+            this.balance = balance;
+        }else{
+            System.out.println("O saldo não pode ser negativo. Saldo zerado.");
+            this.balance = 0;
+        }
+        //this.balance = balance;
+        Account.accountsTotal++;
+    }
+
+    public Account(String name, int accountNumber, double balance) {
+        // Initial limit = 1000 just for example
+        this(name, accountNumber, balance, 1000);
+    }
+
+    public int getAccountNumber() {
+        return accountNumber;
+    }
+
+    public double getBalance() {
+        return balance;
+    }
+
+    public void setBalance(double balance) {
         this.balance = balance;
     }
 
@@ -20,22 +45,6 @@ public class Account {
 
     public void setLimit(double limit) {
         this.limit = limit;
-    }
-
-    public int getAccountNumber() {
-        return accountNumber;
-    }
-
-    public void setAccountNumber(int accountNumber) {
-        this.accountNumber = accountNumber;
-    }
-
-    public double getBalance() {
-        return balance;
-    }
-
-    public void setBalance(double balance) {
-        this.balance = balance;
     }
 
     public double getLoanTotal() {
@@ -48,13 +57,14 @@ public class Account {
 
     synchronized boolean depositValue(double value) {
         this.balance += value;
+        System.out.println("Depósito realizado. Saldo atual: " + this.balance);
         return true;
     }
-
 
     synchronized boolean withdrawValue(double value) {
         if (this.balance >= value) {
             this.balance -= value;
+            System.out.println("Saque realizado. Saldo atual: " + this.balance);
             return true;
         }
         System.out.println("Erro. Saldo insuficiente.");
@@ -62,7 +72,6 @@ public class Account {
         // throw error
         return false;
     }
-
 
     synchronized boolean transferValue(Account destination, double value) {
         if (this.withdrawValue(value)) {
