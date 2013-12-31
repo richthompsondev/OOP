@@ -118,6 +118,11 @@ public abstract class Account implements Authentication {
     public boolean authenticate(int password) {
         return this.authenticator.authenticate(password);
     }
+
+    @Override
+    public String toString() {
+        return "number: " + this.accountNumber;
+    }
 }
 /*
 public class Banco {
