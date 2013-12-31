@@ -1,30 +1,35 @@
-package class2;
+package classes;
 
-import java.util.Scanner;
+import javax.swing.JOptionPane;
 
 public class ScoreAverage {
 	
 	public static void main(String[] args) {
-		Scanner input = new Scanner (System.in);
+		int numberScores = Integer.parseInt(JOptionPane.showInputDialog(null, "Insert the number scores."));
+		double scores[] = new double[numberScores], average = 0;
 		
-		System.out.println("Insert the first grade.");		
-		double score1 = insert(input);
-		
-		System.out.println("Insert the second grade.");	
-		double score2 = insert(input);
-		
-		double average = (score1 + score2)/2;
+		for (int i = 0; i < scores.length; i++) {
+			int mod100 = (i+1) % 100;
+		    int mod10 = (i+1) % 10;
+			if(mod10 == 1 && mod100 != 11)
+				scores[i] = insert(JOptionPane.showInputDialog(null, "Insert the " + (i+1) + "st grade."));
+			else if(mod10 == 2 && mod100 != 12)
+				scores[i] = insert(JOptionPane.showInputDialog(null, "Insert the " + (i+1) + "nd grade."));
+			else if(mod10 == 3 && mod100 != 13)
+				scores[i] = insert(JOptionPane.showInputDialog(null, "Insert the " + (i+1) + "rd grade."));
+			else
+				scores[i] = insert(JOptionPane.showInputDialog(null, "Insert the " + (i+1) + "th grade."));
+			average += scores[i];
+		}
+		average = average/numberScores;
 		
 		//ternary operator
-		System.out.println((average>=7) ? "Average score "+average+", pass." : "Average score "+average+", fail.");
-		input.close();
+		JOptionPane.showMessageDialog(null, (average>=7) ? "Average score is "+average+", pass." : "Average score is "+average+", fail.");
+
 	}
-	
-	static double insert(Scanner input) {
-		String score = input.next();
-		//String to double casting - treatment for countries that use , instead of . as decimal separator. Could use DecimalFormat too.
-		score = score.replace(",", ".");
-		double scoreDouble = Double.parseDouble(score);
+	//String to double casting - treatment for countries that use , instead of . as decimal separator. Could use DecimalFormat too.
+	static double insert(String score) {
+		double scoreDouble = Double.parseDouble(score.replace(",", "."));
 		return scoreDouble;
 	}
 }
