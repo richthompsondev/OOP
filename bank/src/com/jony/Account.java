@@ -16,7 +16,7 @@ import java.util.Objects;
 public abstract class Account implements Authentication {
     private Priority priority;
     private Client client;
-    private  int agency;
+    private int agency;
     private int accountNumber;
     private double balance;
     private double limit;
@@ -36,6 +36,7 @@ public abstract class Account implements Authentication {
             throw new IllegalArgumentException("Invalid balance");
         }
         this.client = client; //assuming each new account creates a new client
+        this.agency = agency
         this.accountNumber = accountNumber;
         this.balance = balance;
     }
