@@ -45,16 +45,7 @@ public class Main {
             acc1.withdrawValue(20.50);
         } catch(InsufficientBalanceException exception){
             System.out.println(exception.getMessage());
-        }
-
-
-        System.out.println();
-        System.out.println("Nome: " + acc2.client.getName());
-        System.out.println("Conta: " + acc2.getAccountNumber());
-        System.out.println("Saldo: " + acc2.getBalance());
-
-        acc2.depositValue(20);
-        acc2.withdrawValue(20.50);*/
+        }*/
     }
 
     static int opt1;
@@ -72,6 +63,8 @@ public class Main {
         //specialClient.setBirth("10/30/1988");
         specialClient.setAddress("touri", "123", null, "machi", "Tokyo", "60050100");
         specialClient.setPassword(1234);
+        CheckingAccount checkingAccount = new CheckingAccount(specialClient, 3124, 223334, 0);
+        specialClient.setCheckingAccount(checkingAccount);
 
         LowIncomeClient lowIncomeClient  = new LowIncomeClient();
         lowIncomeClient.setName("Jonatas Fontele");
