@@ -17,17 +17,19 @@ public class Main {
         // try-with-resources Statement
         try(Connection connection = new Connection() ){
             connection.readData();
-            //database();
+            database();
             //login();
             //menu1();
         } catch (IllegalStateException exception) {
             System.err.println(exception);
             System.out.println("Connection error");
-        } //catch (IOException exception) {
-            //System.err.println(exception);
-            //System.out.println("Reading file error");
-        //}
+        } catch (IOException exception) {
+            System.err.println(exception);
+            exception.printStackTrace();
+            System.out.println("Reading file error");
+        }
     }
+    static String file = "database.txt";
     static Scanner input = new Scanner(System.in);
     static CheckingAccount checkingAccount;
     static SavingsAccount savingsAccount;
@@ -42,7 +44,19 @@ public class Main {
     static ArrayList<Integer> bankStatement2 = new ArrayList<Integer>();
 
     public static int database() throws IOException {
-        InputStream dataBase = new FileInputStream("database.txt");
+        try {
+            File dataBase = new File(file);
+            if (dataBase.createNewFile()) {
+                System.out.println("File created: " +dataBase.getName());
+            } else {
+                System.out.println("File already exists.");
+            }
+        } catch (IOException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
+
+        InputStream dataBase = new FileInputStream(file);
         Reader dataBaseReader = new InputStreamReader(dataBase);
         BufferedReader dataBaseBufferedReader = new BufferedReader(dataBaseReader);
 
@@ -52,18 +66,18 @@ public class Main {
             line = dataBaseBufferedReader.readLine();
         }
 
-        //OutputStream outputStream = new FileOutputStream("database.txt");
+        //OutputStream outputStream = new FileOutputStream(file);
         //Writer dataBaseWriter = new OutputStreamWriter(outputStream);
         //BufferedWriter dataBaseBufferedWriter = new BufferedWriter(dataBaseWriter);
 
-        //BufferedWriter dataBaseBufferedWriter = new BufferedWriter(new FileWriter("database.txt"));
+        //BufferedWriter dataBaseBufferedWriter = new BufferedWriter(new FileWriter(file));
         
-        //PrintStream dataBasePrintStream = new PrintStream(new File("database.txt"));
+        //PrintStream dataBasePrintStream = new PrintStream(new File(file));
         
-        PrintWriter dataBasePrintWriter = new PrintWriter("database.txt");
-        dataBasePrintWriter.println("Teste1");
+        PrintWriter dataBasePrintWriter = new PrintWriter(file);
+        dataBasePrintWriter.println("Teste 0");
         dataBasePrintWriter.println();
-        dataBasePrintWriter.print("Teste2");
+        dataBasePrintWriter.print("Teste 1");
 
         dataBaseBufferedReader.close();
         dataBasePrintWriter.close();
