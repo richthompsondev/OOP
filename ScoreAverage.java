@@ -7,21 +7,24 @@ public class ScoreAverage {
 	public static void main(String[] args) {
 		Scanner input = new Scanner (System.in);
 		
-		//String to double casting - treatment for countries that use , instead of . as decimal separator
-		System.out.println("Insert the first grade.");
-		String input1 = input.next();
-		input1 = input1.replace(",", ".");
-		double score1 = Double.parseDouble(input1);
+		System.out.println("Insert the first grade.");		
+		double score1 = insert(input);
 		
-		System.out.println("Insert the second grade.");
-		String input2 = input.next();
-		input2 = input2.replace(",", ".");
-		double score2 = Double.parseDouble(input2);
+		System.out.println("Insert the second grade.");	
+		double score2 = insert(input);
 		
 		double average = (score1 + score2)/2;
 		
 		//ternary operator
 		System.out.println((average>=7) ? "Average score "+average+", pass." : "Average score "+average+", fail.");
 		input.close();
+	}
+	
+	static double insert(Scanner input) {
+		String score = input.next();
+		//String to double casting - treatment for countries that use , instead of . as decimal separator
+		score = score.replace(",", ".");
+		double scoreDouble = Double.parseDouble(score);
+		return scoreDouble;
 	}
 }
