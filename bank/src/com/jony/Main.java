@@ -17,16 +17,16 @@ public class Main {
         // try-with-resources Statement
         try(Connection connection = new Connection() ){
             connection.readData();
-            database();
+            //database();
             //login();
             //menu1();
         } catch (IllegalStateException exception) {
             System.err.println(exception);
             System.out.println("Connection error");
-        } catch (IOException exception) {
-            System.err.println(exception);
-            System.out.println("Reading file error");
-        }
+        } //catch (IOException exception) {
+            //System.err.println(exception);
+            //System.out.println("Reading file error");
+        //}
     }
     static Scanner input = new Scanner(System.in);
     static CheckingAccount checkingAccount;
