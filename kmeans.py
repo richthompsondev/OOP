@@ -79,3 +79,9 @@ class Kmeans:
 # create simulated data for examples
 X, _ = make_blobs(n_samples=500, n_features=2, centers=4, 
                   shuffle=False, random_state=0)
+
+model = Kmeans(k=4)
+model.fit_predict(X)
+labels = model.labels
+centroids =model.centroids
+plot_clusters(X, labels, centroids)
