@@ -68,7 +68,6 @@ class Kmeans:
     def clustering_errors(self, X):
         cluster_values = [X[cluster] for cluster in self.clusters]
         squared_distances = []
-        # calculation of total squared Euclidean distance
         for i, cluster_array in enumerate(cluster_values):
             squared_distances.append(np.sum((cluster_array - self.centroids[i])**2))
 
@@ -76,12 +75,50 @@ class Kmeans:
         return total_error
 
 
+
+
+
+### Helper Functions for Final Visualization
+def plot_clusters(X, labels, centroids, title='K-Means Clustering'):
+    plt.scatter(X[:, 0], X[:, 1], c=labels, s=50, cmap='viridis', alpha=0.6)
+    plt.scatter(centroids[:, 0], centroids[:, 1], s=50, c='white', marker='D', edgecolors="black")
+    plt.title(title)
+    plt.xlabel('Feature 1')
+    plt.ylabel('Feature 2')
+    plt.show()
+
+
+def scree_plot(ks, errors):
+    plt.plot(ks, errors)
+    plt.xticks(ks)
+    plt.xlabel("K")
+    plt.ylabel("Total squared error")
+    plt.title("Total Error vs. # of Clusters")
+    plt.show()
+
 # create simulated data for examples
 X, _ = make_blobs(n_samples=500, n_features=2, centers=4, 
                   shuffle=False, random_state=0)
+
+
+plt.scatter(X[:, 0], X[:, 1], c="gray")
+plt.title("Simulated Data")
+plt.xlabel('Feature 1')
+plt.ylabel('Feature 2')
+# plt.show()
 
 model = Kmeans(k=4)
 model.fit_predict(X)
 labels = model.labels
 centroids =model.centroids
 plot_clusters(X, labels, centroids)
+
+"""
+ks = [k for k in range(1,15)]
+errors = []
+for k in range(1,15):
+    model = Kmeans(k=k)
+    model.fit_predict(X)
+    errors.append(model.clustering_errors(X))
+"""
+
