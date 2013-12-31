@@ -7,6 +7,7 @@ public class Account {
     private double limit;
     private double loanTotal;
     private static int accountsTotal;
+    private int password;
 
     // Constructors
     public Account(String name, int accountNumber, double balance, double limit) {
@@ -100,6 +101,18 @@ public class Account {
 
     void informAccType() {
 
+    }
+
+    public boolean authenticate(int password) {
+        if (this.password == password) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public void setPassword(int password) {
+        this.password = password;
     }
 }
 /*
