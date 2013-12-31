@@ -29,11 +29,13 @@ public class ArrayQuery {
 		query = input.nextInt();
 		for(int i=0; i<array.length; i++){ 
 			if(array[i]==query) {
-				if(((i+1)%10)==1)
+				int mod100 = (i+1) % 100;
+			    	int mod10 = (i+1) % 10;
+				if(mod10 == 1 && mod100 != 11)
 					System.out.println("Found in the "+(i+1)+"st position.");
-				else if((i+1)%10==2)
+				else if(mod10 == 2 && mod100 != 12)
 					System.out.println("Found in the "+(i+1)+"nd position.");
-				else if((i+1)%10==3)
+				else if(mod10 == 3 && mod100 != 13)
 					System.out.println("Found in the "+(i+1)+"rd position.");
 				else
 					System.out.println("Found in the "+(i+1)+"th position.");
