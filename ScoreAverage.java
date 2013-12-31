@@ -22,7 +22,7 @@ public class ScoreAverage {
 	
 	static double insert(Scanner input) {
 		String score = input.next();
-		//String to double casting - treatment for countries that use , instead of . as decimal separator
+		//String to double casting - treatment for countries that use , instead of . as decimal separator. Could use DecimalFormat too.
 		score = score.replace(",", ".");
 		double scoreDouble = Double.parseDouble(score);
 		return scoreDouble;
