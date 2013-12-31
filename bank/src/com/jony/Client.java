@@ -1,5 +1,12 @@
-package com.jony;
+package com.jony.model;
 
+import com.jony.*;
+/**
+ * Class representing a bank general client
+ *
+ * @author Jonatas Dourado
+ * @version 0.1
+ */
 public class Client extends Person implements Authentication {
     private int priority;
     private CheckingAccount checkingAccount;

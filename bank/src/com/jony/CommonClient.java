@@ -1,6 +1,13 @@
-package com.jony;
+package com.jony.model;
 
-public class CommonClient extends Client{
+import com.jony.model.Client;
+/**
+ * Class representing a bank common client
+ *
+ * @author Jonatas Dourado
+ * @version 0.1
+ */
+public class CommonClient extends Client {
     static Client client  = new Client();
 
     public void setCommon() {

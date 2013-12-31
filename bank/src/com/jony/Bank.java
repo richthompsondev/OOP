@@ -1,5 +1,10 @@
-package com.jony;
-
+package com.jony.model;
+/**
+ * Class representing a bank
+ *
+ * @author Jonatas Dourado
+ * @version 0.1
+ */
 public class Bank {
     private String name;
     private int quantity;

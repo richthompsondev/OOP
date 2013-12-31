@@ -4,6 +4,12 @@ import com.jony.Authentication;
 import com.jony.AuthenticationUtil;
 import com.jony.InsufficientBalanceException;
 
+/**
+ * Abstract class representing a bank account
+ *
+ * @author Jonatas Dourado
+ * @version 0.1
+ */
 public abstract class Account implements Authentication {
     Client client;
     private int accountNumber;

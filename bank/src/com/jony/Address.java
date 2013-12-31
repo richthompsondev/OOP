@@ -1,5 +1,10 @@
-package com.jony;
-
+package com.jony.model;
+/**
+ * Class representing an address
+ *
+ * @author Jonatas Dourado
+ * @version 0.1
+ */
 public class Address {
     private String street;
     private String number;

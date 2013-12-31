@@ -1,6 +1,13 @@
-package com.jony;
+package com.jony.model;
 
-public class LowIncomeClient extends Client{
+import com.jony.model.Client;
+/**
+ * Class representing a bank low income client
+ *
+ * @author Jonatas Dourado
+ * @version 0.1
+ */
+public class LowIncomeClient extends Client {
     static Client client  = new Client();
 
     public void setLowIncome() {

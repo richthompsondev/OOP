@@ -1,6 +1,15 @@
-package com.jony;
+package com.jony.model;
 
-public class Manager extends Employee implements Authentication{
+import com.jony.Authentication;
+import com.jony.AuthenticationUtil;
+import com.jony.model.Employee;
+/**
+ * Class representing a manager role
+ *
+ * @author Jonatas Dourado
+ * @version 0.1
+ */
+public class Manager extends Employee implements Authentication {
     private double bonus;
 
     private AuthenticationUtil authenticator;

@@ -1,5 +1,12 @@
-package com.jony;
+package com.jony.model;
 
+import com.jony.model.Person;
+/**
+ * Abstract class representing an employee
+ *
+ * @author Jonatas Dourado
+ * @version 0.1
+ */
 // Abstract, so the class can't be instantiated
 public abstract class Employee extends Person {
 	private String office;

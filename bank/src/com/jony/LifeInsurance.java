@@ -1,6 +1,13 @@
-package com.jony;
+package com.jony.model;
 
-public class LifeInsurance implements Taxable{
+import com.jony.Taxable;
+/**
+ * Class representing life insurance
+ *
+ * @author Jonatas Dourado
+ * @version 0.1
+ */
+public class LifeInsurance implements Taxable {
     @Override
     public double getTaxAmount() {
         return 42;

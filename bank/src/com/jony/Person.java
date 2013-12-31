@@ -1,11 +1,18 @@
-package com.jony;
+package com.jony.model;
+
+import com.jony.model.Address;
 
 import java.util.Calendar;
-
+/**
+ * Abstract class representing the information about all users
+ *
+ * @author Jonatas Dourado
+ * @version 0.1
+ */
 public abstract class Person {
     Address address = new Address();
     private String name;
-    private long cpf; // Social Security or National Insurance Number
+    private String cpf; // Social Security or National Insurance Number
     private char sex;
     private Calendar birth = Calendar.getInstance();
 
@@ -17,11 +24,11 @@ public abstract class Person {
         this.name = name;
     }
 
-    public long getCpf() {
+    public String getCpf() {
         return cpf;
     }
 
-    public void setCpf(long cpf) {
+    public void setCpf(String cpf) {
         this.cpf = cpf;
     }
 
