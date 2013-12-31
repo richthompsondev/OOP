@@ -17,7 +17,7 @@ def prime_factors(n):
             n = n / i
     # Condition if n is a prime number greater than 2
     if n > 2:
-        print(n)
+        print(int(n))
 
 
 # Driver Program to test above function
