@@ -1,8 +1,19 @@
-package classes;
-
 import java.util.Locale;
 import java.text.NumberFormat;
 
+public class VolunteerExtendsEmployee {	
+	public static void main(String[] args) {
+		Employee employee = new Employee("Erica");
+		employee.print();
+		employee.setSalary(60000);
+		employee.print();
+		        
+		Volunteer volunteer = new Volunteer("Anna");
+		volunteer.setHours(20);
+		volunteer.print();
+	}
+}
+// If declared inside 'VolunteerExtendsEmployee', both need to be static
 class Employee {
     // instance variables:
     protected String name; 
@@ -73,14 +84,4 @@ class Volunteer extends Employee{
         System.out.println("Volunteer Name: " + this.getName() 
             + "\nHours: " + this.getHours());    
     }
-
-static void main(String[] args) {
-	Employee employee = new Employee("Erica");
-	employee.print();
-	employee.setSalary(60000);
-	employee.print();
-	        
-	Volunteer volunteer = new Volunteer("Anna");
-	volunteer.setHours(20);
-	volunteer.print();
-}}
+}
