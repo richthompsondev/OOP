@@ -11,7 +11,7 @@ import java.util.Objects;
  * Abstract class representing a bank account
  *
  * @author Jonatas Dourado
- * @version 0.1
+ * @version 0.2
  */
 public abstract class Account implements Authentication, Comparable<Account> {
     private Priority priority;
