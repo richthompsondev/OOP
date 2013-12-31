@@ -8,21 +8,14 @@ def gcd(a, b):
     return gcd(b % a, a)
 
 
-a = 10
-b = 15
-print("gcd(", a, ",", b, ") = ", gcd(a, b))
-
-a = 35
-b = 10
-print("gcd(", a, ",", b, ") = ", gcd(a, b))
-
-a = 31
-b = 2
+a = 15
+b = 20
 print("gcd(", a, ",", b, ") = ", gcd(a, b))
 
 
 # Python program to demonstrate working of extended Euclidean Algorithm
-# function for extended Euclidean Algorithm
+# Function for extended Euclidean Algorithm
+# Essential step in RSA public-key encryption method.
 
 def gcd_extended(a, b):
     # Base Case
@@ -38,7 +31,7 @@ def gcd_extended(a, b):
 
 
 # Driver code
-a, b = 35, 15
+a, b = 20, 15
 g, x, y = gcd_extended(a, b)
 print("gcd(", a, ",", b, ") = ", g)
 
@@ -52,3 +45,14 @@ def lcm(a, b):
 a = 15
 b = 20
 print('LCM of', a, 'and', b, 'is', lcm(a, b))
+# Brute force LCM
+# def lcm(a, b):
+#    if a > b:
+#        lcm = a
+#    else:
+#        lcm = b
+#    while(True):
+#        if (lcm % a == 0) and (lcm % b == 0):
+#            break
+#        lcm += 1
+#    return lcm
