@@ -1,13 +1,38 @@
 package com.jony;
 
 public class Client {
-    private String name, password;
+    Address address = new Address();
+    private String name;
+    private String password;
     private String cpf; // Social Security or National Insurance Number
     private int age;
     private char sex;
-    private String address;
     private CheckingAccount checkingAccount;
     private SavingsAccount savingsAccount;
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public char getSex() {
+        return sex;
+    }
+
+    public void setSex(char sex) {
+        this.sex = sex;
+    }
 
     public String getName() {
         return name;
@@ -23,14 +48,6 @@ public class Client {
 
     public void setCpf(String cpf) {
         this.cpf = cpf;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
     }
 
     public CheckingAccount getCheckingAccount() {

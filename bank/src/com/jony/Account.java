@@ -14,6 +14,14 @@ public class Account {
         this.balance = balance;
     }
 
+    public double getLimit() {
+        return limit;
+    }
+
+    public void setLimit(double limit) {
+        this.limit = limit;
+    }
+
     public int getAccountNumber() {
         return accountNumber;
     }
