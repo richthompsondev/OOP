@@ -6,8 +6,8 @@ public class Employee {
 	private String office;
 	private double salary;
 	
-	public void giveBonus(){
-		
+	public double giveBonus(){
+		return this.salary * 0.1;
 	}
 	
 	double calculatesAnnualGain() {
