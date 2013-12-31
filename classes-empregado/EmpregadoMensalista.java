@@ -5,8 +5,8 @@
  */
 public class EmpregadoMensalista extends Empregado {
 
-	private int faltas; // quantidade de dias n„o trabalhados
-	private double valorfalta; // valor de cada dia n„o trabalhado
+	private int faltas; // quantidade de dias n√£o trabalhados
+	private double valorfalta; // valor de cada dia n√£o trabalhado
 
 	public EmpregadoMensalista(String primeiro_nome, String ultimo_nome, double salario, double valorfalta) {
 		super(primeiro_nome, ultimo_nome, salario); // chama o construtor original para inicializar corretamente
