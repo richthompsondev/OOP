@@ -1,6 +1,7 @@
 package com.jony;
 import com.jony.model.*;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 import java.util.ArrayList;
 
@@ -12,12 +13,50 @@ import java.util.ArrayList;
  */
 
 public class Main {
-    static Scanner input = new Scanner(System.in);
-    static CheckingAccount checkingAccount = new CheckingAccount();
-    static SavingsAccount savingsAccount  = new SavingsAccount();
-    static SpecialClient specialClient  = new SpecialClient();
-    static CommonClient commonClient  = new CommonClient();
-    static LowIncomeClient lowIncomeClient  = new LowIncomeClient();
+    public static void main(String[] args) {
+        // try-with-resources Statement
+        try(Connection connection = new Connection() ){
+            connection.readData();
+            database();
+            login();
+            menu1();
+        } catch (IllegalStateException exception) {
+            System.out.println("Connection error");
+        }
+        /* Connection connection = null;
+        try{
+            connection = new Connection();
+            connection.readData();
+            connection.close();
+        } catch(IllegalStateException exception){
+            System.out.println("Connection error");
+        } finally { // Will always be executed
+            connection.close();
+        }*/
+
+
+
+        /*System.out.println("Nome: " + acc1.client.getName());
+        System.out.println("Conta: " + acc1.getAccountNumber());
+        System.out.println("Saldo: " + acc1.getBalance());
+
+        acc1.depositValue(20);
+        try {
+            acc1.withdrawValue(20.50);
+        } catch(InsufficientBalanceException exception){
+            System.out.println(exception.getMessage());
+        }
+
+
+        System.out.println();
+        System.out.println("Nome: " + acc2.client.getName());
+        System.out.println("Conta: " + acc2.getAccountNumber());
+        System.out.println("Saldo: " + acc2.getBalance());
+
+        acc2.depositValue(20);
+        acc2.withdrawValue(20.50);*/
+    }
+
     static int opt1;
     static int opt2;
     static double value;
@@ -26,56 +65,57 @@ public class Main {
     static ArrayList<Integer> bankStatement2 = new ArrayList<Integer>();
 
     public static int database() {
+        SpecialClient specialClient  = new SpecialClient();
+        specialClient.setName("階戸瑠李");
+        specialClient.setCpf("01234567899");
+        specialClient.setSex('f');
+        //specialClient.setBirth("10/30/1988");
+        specialClient.setAddress("touri", "123", null, "machi", "Tokyo", "60050100");
+        specialClient.setPassword(1234);
 
-        specialClient.setName("João");
-        specialClient.setPassword("1234");
-        specialClient.setBirth(22);
-        specialClient.setSex('m');
-        specialClient.setSpecial();
-
-        commonClient.setName("Paulo");
-        commonClient.setPassword("1234");
-        commonClient.setBirth(27);
-        commonClient.setSex('m');
-        commonClient.setCommon();
-
-        lowIncomeClient.setName("Maria");
-        lowIncomeClient.setPassword("1234");
-        lowIncomeClient.setBirth(25);
-        lowIncomeClient.setSex('f');
-        lowIncomeClient.setLowIncome();
+        LowIncomeClient lowIncomeClient  = new LowIncomeClient();
+        lowIncomeClient.setName("Jonatas Fontele");
+        lowIncomeClient.setCpf("01234567898");
+        lowIncomeClient.setSex('m');
+        //lowIncomeClient.setBirth("06/10/1988");
+        lowIncomeClient.setAddress("rua", "111", "407", "bairro", "Fortaleza", "60050101");
+        lowIncomeClient.setPassword(4321);
         return 0;
     }
 
     public static int login() {
-        String id = null;
-        String senha = null;
-        System.out.println("Digite o ID:");
-        id = input.nextLine();
-        System.out.println("Digite a senha:");
-        senha = input.nextLine();
-        if(id !Paul= specialClient.getName() && senha != specialClient.getPassword())
-        opt2 = 1;
-        else if(id != commonClient.getName() && senha != commonClient.getPassword())
-            opt2= 2;
-        else if(id != lowIncomeClient.getName() && senha != lowIncomeClient.getPassword())
-            opt2 =3;
-        else{
-            System.out.println("Id ou Senha incorreto.");
-            return login();
+        try(Scanner input = new Scanner(System.in)){
+            String id = null;
+            String senha = null;
+            System.out.println("Digite o ID:");
+            id = input.nextLine();
+            System.out.println("Digite a senha:");
+            senha = input.nextLine();
+            if(id != specialClient.getName() && senha != specialClient.getPassword())
+                opt2 = 1;
+            else if(id != commonClient.getName() && senha != commonClient.getPassword())
+                opt2= 2;
+            else if(id != lowIncomeClient.getName() && senha != lowIncomeClient.getPassword())
+                opt2 =3;
+            else{
+                System.out.println("Id ou Senha incorreto.");
+                return login();
+            }
+            return 0;
+        }catch (InputMismatchException exception) {
+            System.out.println("Incompatibilidade de entrada.");
         }
-        return 0;
     }
 
     public static int menu1() {
         int menu;
-        System.out.println("Voc� tem "+ checkingAccount.getBalance()+" reais na Conta Corrente.");
-        System.out.println("Voc� tem "+ savingsAccount.getBalance()+" reais na Conta Poupan�a.");
+        System.out.println("Você tem "+ checkingAccount.getBalance()+" reais na Conta Corrente.");
+        System.out.println("Você tem "+ savingsAccount.getBalance()+" reais na Conta Poupança.");
         System.out.println("Qual o tipo da conta?");
         System.out.println("1 - Corrente");
-        System.out.println("2 - Poupan�a");
+        System.out.println("2 - Poupança");
         System.out.println("3 - Sair");
-        System.out.println("Digite um op��o: ");
+        System.out.println("Digite um opção: ");
         menu = input.nextInt();
         switch(menu){
             case 1:
@@ -183,49 +223,4 @@ public class Main {
         }
         return menu1();
     }
-
-    public static void main(String[] args) {
-        try(Connection connection = new Connection() ){
-            connection.readData();
-        } catch (IllegalStateException exception) {
-            System.out.println("Connection error");
-        }
-        /* Connection connection = null;
-        try{
-            connection = new Connection();
-            connection.readData();
-            connection.close();
-        } catch(IllegalStateException exception){
-            System.out.println("Connection error");
-        } finally { // Will always be executed
-            connection.close();
-        }*/
-        database();
-        login();
-        menu1();
-        //Instances
-        Account acc1 = new Account("Jonatas", 123, 1.01);
-        Account acc2 = new Account("階戸瑠李", 321, 1000000);
-
-        System.out.println("Nome: " + acc1.client.getName());
-        System.out.println("Conta: " + acc1.getAccountNumber());
-        System.out.println("Saldo: " + acc1.getBalance());
-
-        acc1.depositValue(20);
-        try {
-            acc1.withdrawValue(20.50);
-        } catch(InsufficientBalanceException exception){
-            System.out.println(exception.getMessage());
-        }
-
-
-        System.out.println();
-        System.out.println("Nome: " + acc2.client.getName());
-        System.out.println("Conta: " + acc2.getAccountNumber());
-        System.out.println("Saldo: " + acc2.getBalance());
-
-        acc2.depositValue(20);
-        acc2.withdrawValue(20.50);
-    }
-
 }
