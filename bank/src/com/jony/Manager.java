@@ -2,10 +2,14 @@ package com.jony;
 
 public class Manager extends Employee{
     private int password;
+    private double bonus;
 
-    @Override
     public double getBonus() {
-        return super.getBonus() + super.getSalary();
+        return bonus;
+    }
+
+    public void setBonus(double bonus) {
+        this.bonus = bonus;
     }
 
     public void setPassword(int password) {

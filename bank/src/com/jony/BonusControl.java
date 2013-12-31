@@ -6,9 +6,9 @@ public class BonusControl {
     public double getSum() {
         return sum;
     }
+
     // For Employee manager = new Manager();
     public void register(Employee employee){
-        double bonus = employee.getBonus();
-        this.sum = this.sum + bonus;
+        this.sum = this.sum + employee.getBonus();
     }
 }

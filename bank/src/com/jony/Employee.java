@@ -1,5 +1,6 @@
 package com.jony;
 
+// Abstract, so the class can't be instantiated
 public abstract class Employee extends Person {
 	private String office;
 	private double salary;
@@ -20,9 +21,8 @@ public abstract class Employee extends Person {
 		this.salary = salary;
 	}
 
-	public double getBonus(){
-		return this.salary * 0.1;
-	}
+	// Method implemented in the child class
+	public abstract double getBonus();
 	
 	double calculatesAnnualGain() {
 		return salary*12;
