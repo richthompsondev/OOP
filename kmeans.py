@@ -1,3 +1,8 @@
+# import required packages
+import numpy as np
+import matplotlib.pyplot as plt
+from sklearn.datasets import make_blobs
+
 # helper function for calculating Euclidean distance
 def euclidean_distance(a,b):
     d = np.sqrt(np.sum((a - b)**2))
