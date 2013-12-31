@@ -78,14 +78,20 @@ public class Account {
             destination.depositValue(value);
             return true;
         }
-        System.out.println("Erro. Saldo insuficiente para transferencia.");
+        System.out.println("Erro. Saldo insuficiente para transferência.");
         return false;
     }
 
-    public void accountsLoan(int value) {
-        int loanTotal = value;
-        this.loanTotal = this.loanTotal + loanTotal;
-        balance = balance + value;
+    synchronized boolean accountsLoan(double value) {
+        if(this.loanTotal <= value){
+            double loanTotal = value;
+            this.loanTotal = this.loanTotal + loanTotal;
+            balance = balance + value;
+            System.out.println("Empréstimo realizado. Saldo atual: " + this.balance);
+            return true;
+        }
+        System.out.println("Erro. Valor do empréstimo acima do permitido.");
+        return false;
     }
 
     void informBalance() {
