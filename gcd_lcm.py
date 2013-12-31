@@ -1,7 +1,25 @@
+# GCD of more than two (or array) numbers
+# Function implements the Euclidian algorithm to find highest common factor of two number
+def find_gcd(a, b):
+    while(b):
+        a, b = b, a % b
+    return a
+         
+    
+# Driver Code       
+l = [2, 4, 6, 8, 16]
+num1 = l[0]
+num2 = l[1]
+gcd = find_gcd(num1, num2)
+for i in range(2, len(l)):
+    gcd = find_gcd(gcd, l[i])
+     
+print(gcd)
+
+
 # Python program to demonstrate Basic Euclidean Algorithm
 # Function to return gcd of a and b
 # Time Complexity: O(Log min(a, b))
-
 def gcd(a, b):
     if a == 0:
         return b
