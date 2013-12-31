@@ -3,6 +3,7 @@ package com.jony.model;
 import com.jony.Authentication;
 import com.jony.AuthenticationUtil;
 import com.jony.InsufficientBalanceException;
+import com.jony.Priority;
 
 /**
  * Abstract class representing a bank account
@@ -11,7 +12,9 @@ import com.jony.InsufficientBalanceException;
  * @version 0.1
  */
 public abstract class Account implements Authentication {
-    Client client;
+    private Priority priority;
+    private Client client;
+    private  int agency;
     private int accountNumber;
     private double balance;
     private double limit;
@@ -20,7 +23,10 @@ public abstract class Account implements Authentication {
     private AuthenticationUtil authenticator;
 
     // Constructors
-    public Account(String name, int accountNumber, double balance, double limit) {
+    public Account(Client client, int agency, int accountNumber, double balance, double limit) {
+        if(agency < 1) {
+            throw new IllegalArgumentException("Invalid agency number");
+        }
         if(accountNumber < 1) {
             throw new IllegalArgumentException("Invalid account number");
         }
@@ -28,16 +34,15 @@ public abstract class Account implements Authentication {
             this.balance = 0;
             throw new IllegalArgumentException("Invalid balance");
         }
-        this.client = new Client(); //assuming each new account creates a new client
-        this.client.setName(name);
+        this.client = new SpecialClient(); //assuming each new account creates a new client
         this.accountNumber = accountNumber;
         this.balance = balance;
         Account.accountsTotal++;
     }
 
-    public Account(String name, int accountNumber, double balance) {
+    public Account(Client client, int agency, int accountNumber, double balance) {
         // Initial limit = 1000 just for example
-        this(name, accountNumber, balance, 1000);
+        this(client, agency, accountNumber, balance, 1000);
     }
 
     public int getAccountNumber() {

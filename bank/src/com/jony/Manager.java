@@ -14,7 +14,6 @@ public class Manager extends Employee implements Authentication {
 
     private AuthenticationUtil authenticator;
 
-    // When creating a client, also create an util authentication internally
     public Manager(){
         this.authenticator = new AuthenticationUtil();
     }

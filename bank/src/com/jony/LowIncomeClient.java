@@ -1,5 +1,6 @@
 package com.jony.model;
 
+import com.jony.Priority;
 import com.jony.model.Client;
 /**
  * Class representing a bank low income client
@@ -8,9 +9,10 @@ import com.jony.model.Client;
  * @version 0.1
  */
 public class LowIncomeClient extends Client {
-    static Client client  = new Client();
+    private Priority priority = Priority.MIN;
 
-    public void setLowIncome() {
-        client.setPriority(1);
+    @Override
+    public Priority getPriority() {
+        return priority;
     }
 }

@@ -12,8 +12,8 @@ import com.jony.model.Account;
  */
 // Conta Corrente
 public class CheckingAccount extends Account implements Taxable {
-    public CheckingAccount(String name, int accountNumber, double balance, double limit) {
-        super(name, accountNumber, balance, limit);
+    public CheckingAccount(Client client, int agency, int accountNumber, double balance, double limit) {
+        super(client, agency, accountNumber, balance, limit);
     }
 
     @Override

@@ -1,6 +1,7 @@
 package com.jony.model;
 
-import com.jony.model.Client;
+import com.jony.Priority;
+
 /**
  * Class representing a bank special client
  *
@@ -8,9 +9,10 @@ import com.jony.model.Client;
  * @version 0.1
  */
 public class SpecialClient extends Client {
-    static Client client  = new Client();
+    private Priority priority = Priority.MAX;
 
-    public void setSpecial() {
-        client.setPriority(3);
+    @Override
+    public Priority getPriority() {
+        return priority;
     }
 }

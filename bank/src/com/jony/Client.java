@@ -7,8 +7,7 @@ import com.jony.*;
  * @author Jonatas Dourado
  * @version 0.1
  */
-public class Client extends Person implements Authentication {
-    private int priority;
+public abstract class Client extends Person implements Authentication {
     private CheckingAccount checkingAccount;
     private SavingsAccount savingsAccount;
 
@@ -29,13 +28,7 @@ public class Client extends Person implements Authentication {
         return this.authenticator.authenticate(password);
     }
 
-    public int getPriority() {
-        return priority;
-    }
-
-    public void setPriority(int priority) {
-        this.priority = priority;
-    }
+    public abstract Priority getPriority();
 
     public CheckingAccount getCheckingAccount() {
         return checkingAccount;

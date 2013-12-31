@@ -1,5 +1,6 @@
 package com.jony.model;
 
+import com.jony.Priority;
 import com.jony.model.Client;
 /**
  * Class representing a bank common client
@@ -8,9 +9,10 @@ import com.jony.model.Client;
  * @version 0.1
  */
 public class CommonClient extends Client {
-    static Client client  = new Client();
+    private Priority priority = Priority.NORMAL;
 
-    public void setCommon() {
-        client.setPriority(2);
+    @Override
+    public Priority getPriority() {
+        return priority;
     }
 }

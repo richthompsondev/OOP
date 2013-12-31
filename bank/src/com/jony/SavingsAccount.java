@@ -9,8 +9,8 @@ import com.jony.model.Account;
  */
 public class SavingsAccount extends Account {
 
-    public SavingsAccount(String name, int accountNumber, double balance, double limit) {
-        super(name, accountNumber, balance, limit); // Can't creat construct in child class without it
+    public SavingsAccount(Client client, int agency, int accountNumber, double balance, double limit) {
+        super(client, agency, accountNumber, balance, limit); // Can't creat construct in child class without it
     }
 
     @Override

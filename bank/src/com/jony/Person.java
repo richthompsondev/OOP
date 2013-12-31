@@ -10,11 +10,11 @@ import java.util.Calendar;
  * @version 0.1
  */
 public abstract class Person {
-    Address address = new Address();
     private String name;
     private String cpf; // Social Security or National Insurance Number
     private char sex;
     private Calendar birth = Calendar.getInstance();
+    private Address address = new Address();
 
     public String getName() {
         return name;
@@ -46,5 +46,29 @@ public abstract class Person {
 
     public void setBirth(Calendar birth) {
         this.birth = birth;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(String street, String number, String complement, String district, String city, String zipcode) {
+        this.address.setStreet(street);
+        this.address.setNumber(number);
+        this.address.setComplement(complement);
+        this.address.setDistrict(district);
+        this.address.setCity(city);
+        this.address.setZipcode(zipcode);
+    }
+
+    @Override
+    public String toString() {
+        return "Person{" +
+                "name='" + name + '\'' +
+                ", cpf='" + cpf + '\'' +
+                ", sex=" + sex +
+                ", birth=" + birth +
+                ", address=" + address +
+                '}';
     }
 }
