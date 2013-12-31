@@ -23,31 +23,12 @@ public class Main {
         } catch (IllegalStateException exception) {
             System.out.println("Connection error");
         }
-        /* Connection connection = null;
-        try{
-            connection = new Connection();
-            connection.readData();
-            connection.close();
-        } catch(IllegalStateException exception){
-            System.out.println("Connection error");
-        } finally { // Will always be executed
-            connection.close();
-        }*/
-
-
-
-        /*System.out.println("Nome: " + acc1.client.getName());
-        System.out.println("Conta: " + acc1.getAccountNumber());
-        System.out.println("Saldo: " + acc1.getBalance());
-
-        acc1.depositValue(20);
-        try {
-            acc1.withdrawValue(20.50);
-        } catch(InsufficientBalanceException exception){
-            System.out.println(exception.getMessage());
-        }*/
     }
-
+    static CheckingAccount checkingAccount;
+    static SavingsAccount savingsAccount;
+    static SpecialClient specialClient;
+    static CommonClient commonClient;
+    static LowIncomeClient lowIncomeClient;
     static int opt1;
     static int opt2;
     static double value;
@@ -56,23 +37,25 @@ public class Main {
     static ArrayList<Integer> bankStatement2 = new ArrayList<Integer>();
 
     public static int database() {
-        SpecialClient specialClient  = new SpecialClient();
+        specialClient  = new SpecialClient();
         specialClient.setName("階戸瑠李");
         specialClient.setCpf("01234567899");
         specialClient.setSex('f');
         //specialClient.setBirth("10/30/1988");
         specialClient.setAddress("touri", "123", null, "machi", "Tokyo", "60050100");
         specialClient.setPassword(1234);
-        CheckingAccount checkingAccount = new CheckingAccount(specialClient, 3124, 223334, 1000);
+        checkingAccount = new CheckingAccount(specialClient, 3124, 223334, 1000);
         specialClient.setCheckingAccount(checkingAccount);
 
-        LowIncomeClient lowIncomeClient  = new LowIncomeClient();
+        lowIncomeClient  = new LowIncomeClient();
         lowIncomeClient.setName("Jonatas Fontele");
         lowIncomeClient.setCpf("01234567898");
         lowIncomeClient.setSex('m');
         //lowIncomeClient.setBirth("06/10/1988");
         lowIncomeClient.setAddress("rua", "111", "407", "bairro", "Fortaleza", "60050101");
         lowIncomeClient.setPassword(4321);
+        savingsAccount = new SavingsAccount(lowIncomeClient, 1234, 44332, 0.10);
+        lowIncomeClient.setSavingsAccount(savingsAccount);
         return 0;
     }
 
@@ -82,14 +65,14 @@ public class Main {
                 //InternalSystem internalSystem = new InternalSystem();
                 //internalSystem.authenticate();
                 System.out.println("Account number: ");
-                String accountNumberInput = input.nextLine();
+                int accountNumberInput = input.nextInt();
                 System.out.println("Password: ");
-                String passwordInput = input.nextLine();
-                if(id != specialClient.getName() && senha != specialClient.getPassword())
+                int passwordInput = input.nextInt();
+                if(accountNumberInput != specialClient.getCheckingAccount().getAccountNumber() && specialClient.authenticate(passwordInput))
                     opt2 = 1;
-                else if(id != commonClient.getName() && senha != commonClient.getPassword())
+                else if(accountNumberInput != commonClient.getCheckingAccount().getAccountNumber() && commonClient.authenticate(passwordInput))
                     opt2= 2;
-                else if(id != lowIncomeClient.getName() && senha != lowIncomeClient.getPassword())
+                else if(accountNumberInput != lowIncomeClient.getCheckingAccount().getAccountNumber() && lowIncomeClient.authenticate(passwordInput))
                     opt2 =3;
                 else{
                     System.out.println("Id ou Senha incorreto.");
@@ -139,6 +122,17 @@ public class Main {
     }
 
     public static int menu2() {
+        /*System.out.println("Nome: " + acc1.client.getName());
+        System.out.println("Conta: " + acc1.getAccountNumber());
+        System.out.println("Saldo: " + acc1.getBalance());
+
+        acc1.depositValue(20);
+        try {
+            acc1.withdrawValue(20.50);
+        } catch(InsufficientBalanceException exception){
+            System.out.println(exception.getMessage());
+        }*/
+
         int menu;
         System.out.println("O que deseja?");
         System.out.println("1 - Empr�stimo");
@@ -165,7 +159,7 @@ public class Main {
                     }
                     System.out.println("Digite o valor do Empr�stimo ");
                     value = input.nextInt();
-                    checkingAccount.contabilizaEmprestimo(value);
+                    checkingAccount.accountsLoan(value);
                     bankStatement.add(value);
                     bankStatement2.add(1);
                 }else{
@@ -185,7 +179,7 @@ public class Main {
                         return menu1();
                     }
 
-                    checkingAccount.sacar(value);
+                    //checkingAccount.withdrawValue(value);
                     bankStatement.add(value);
                     bankStatement2.add(2);
                 }else{
@@ -196,7 +190,7 @@ public class Main {
                         System.out.println("Voc� n�o pode mais fazer intera��es com o sistema.");
                         return menu1();
                     }
-                    savingsAccount.sacar(value);
+                    //savingsAccount.withdrawValue(value);
                 }
                 break;
             case 3:
