@@ -5,6 +5,8 @@ import com.jony.AuthenticationUtil;
 import com.jony.InsufficientBalanceException;
 import com.jony.Priority;
 
+import java.util.Objects;
+
 /**
  * Abstract class representing a bank account
  *
@@ -106,12 +108,22 @@ public abstract class Account implements Authentication {
         return false;
     }
 
-    void informBalance() {
+    @Override
+    public boolean equals(Object ref) {
+        Account another = (Account) ref;
 
+        if(this.agency != another.agency) {
+            return false;
+        }
+        if(this.accountNumber != another.accountNumber) {
+            return false;
+        }
+        return true;
     }
 
-    void informAccType() {
-
+    @Override
+    public int hashCode() {
+        return Objects.hash(agency, accountNumber);
     }
 
     @Override
@@ -129,74 +141,3 @@ public abstract class Account implements Authentication {
         return "number: " + this.accountNumber;
     }
 }
-/*
-public class Banco {
-     public synchronized boolean transfere
-onta c1, Conta c2, float valor) {
-        if (saque(c1, valor)){
-            if (deposito(c2, valor)){
-               return(true);
-            }else{
-               deposito(c1,valor);
-            }
-       }
-    }
-
-    public synchronized boolean saque(Conta conta, float valor) {
-       if (valor <= conta.getSaldo() && conta.valida()) {
-             conta.debito(valor);
-             return (true);
-        }
-        return (false);
-    }
-
-    public synchronized boolean deposito(Conta conta, float valor) {
-        if (conta.valida()) {
-             conta.credito(valor);
-             return (true);
-        }
-        return (false);
-    }
-}
-
-*
-*
-01. import java.util.Scanner;
-02. public class AparelhoDeSom {
-03.     private static Scanner scanner;
-04.     private static final int minVol = 0, maxVol = 100;
-05.     private int volume;
-06.
-07.     public AparelhoDeSom() {
-08.         scanner = new Scanner(System.in);
-09.     }
-10.
-11.     private void definirVolume() throws VolumeException {
-12.         System.out.print("Digite o valor do volume: ");
-13.         int volume = scanner.nextInt();
-14.         if(volume < minVol || volume > maxVol)
-15.             throw new VolumeException(volume);
-16.
-17.             this.volume = volume;
-18.     }
-19. }
-
-01. public class VolumeExcepetion extends Excepetion {
-02.     private int valor;
-03.
-04.     public VolumeExcepetion(int valor) {
-05.         this.valor = valor;
-06.     }
-07.
-08.     public String getMessage() {
-09.         return "O valor" + valor + "n�o est� dentro do limite aceit�vel para volume.";
-10.     }
-11. }
-
-public static void lerTeclado() throws InvalidAttributeValueException {
-    Scanner s = new Scanner(System.in);
-    String texto = s.nextLine();
-    if(texto.isEmpty()) // Testa se o texto � vazio
-        throw new InvalidAttributeValueException();
-}
-*/
