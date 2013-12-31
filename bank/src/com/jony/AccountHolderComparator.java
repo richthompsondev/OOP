@@ -14,8 +14,8 @@ public class AccountHolderComparator implements Comparator<Account> {
 
     @Override
     public int compare(Account a1, Account a2) {
-        String a1Name = a1.getHolderName();
-        String a2Name = a2.getHolderName();
+        String a1Name = a1.getHolderName().getName();
+        String a2Name = a2.getHolderName().getName();
         return a1Name.compareTo(a2Name);
     }
 }
@@ -47,7 +47,24 @@ public class Test {
     cc4.setTitular(clienteCC4);
     cc4.deposita(222.0);
 
-    lista.sort(new TitularDaContaComparator()); //já deixando mais enxuto
+    // Classe anônima
+    Comparator<Account> comp = new Comparator<Account>() {
+        @Override
+        public int compare(Account a1, Account a2) {
+            String a1Name = a1.getHolderName().getName();
+            String a2Name = a2.getHolderName().getName();
+            return a1Name.compareTo(a2Name);
+        }
+    }
+    * //Função lambda
+    * Comparator<Account> comp = (Account a1, Account a2) -> {
+    *       String a1Name = a1.getHolderName().getName();
+    *       String a2Name = a2.getHolderName().getName();
+    *       return a1Name.compareTo(a2Name);
+    *   };
+    *
+
+    lista.sort(comp);
 
     for (Conta conta : lista) {
         System.out.println(conta + ", " + conta.getTitular().getNome());
