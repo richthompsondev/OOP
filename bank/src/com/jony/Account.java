@@ -78,13 +78,13 @@ public abstract class Account implements Authentication, Comparable<Account> {
         this.loanTotal = loanTotal;
     }
 
-    synchronized boolean depositValue(double value) {
+    public synchronized boolean depositValue(double value) {
         this.balance += value;
         System.out.println("Depósito realizado. Saldo atual: " + this.balance);
         return true;
     }
 
-    synchronized void withdrawValue(double value) throws InsufficientBalanceException{
+    public synchronized void withdrawValue(double value) throws InsufficientBalanceException{
         if (this.balance < value) {
             throw new InsufficientBalanceException("Saldo insuficiente.");
         }
@@ -94,12 +94,12 @@ public abstract class Account implements Authentication, Comparable<Account> {
         // throw error
     }
 
-    synchronized void transferValue(Account destination, double value) throws InsufficientBalanceException{
+    public synchronized void transferValue(Account destination, double value) throws InsufficientBalanceException{
         this.withdrawValue(value);
         destination.depositValue(value);
     }
 
-    synchronized boolean accountsLoan(double value) {
+    public boolean accountsLoan(double value) {
         if(this.loanTotal <= value){
             double loanTotal = value;
             this.loanTotal = this.loanTotal + loanTotal;
