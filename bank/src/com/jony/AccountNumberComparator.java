@@ -38,21 +38,30 @@ public class Test {
     lista.add(cc3);
     lista.add(cc4);
 
-    NumeroDaContaComparator comparator = new NumeroDaContaComparator();
-    lista.sort(comparator);
+    lista.sort(new NumeroDaContaComparator());
 
     for (Conta conta : lista) {
         System.out.println(conta);
     }
 
-    NumeroDaContaComparator comparator = new NumeroDaContaComparator();
-    lista.sort(comparator);
+    // Classe anônima - tira a necessidade de criar AccountNumberComparator
+    lista.sort(new Comparator<Account>() {
+        @Override
+        public int compare(Account a1, Account a2) {
+            return Integer.compare(a1.getAccountNumber(), a2.getAccountNumber());
+        }
+    });
+    * //Função lambda
+    * // Interface lista já sabe que a1 e a2 são do tipo Account
+    * lista.sort((a1, a2) -> Integer.compare(a1.getAccountNumber(), a2.getAccountNumber()));
+    *
 
     System.out.println("---------");
 
     for (Conta conta : lista) {
         System.out.println(conta);
     }
+    * lista.forEach((conta) -> System.out.println(conta));
 }
 *
  */
