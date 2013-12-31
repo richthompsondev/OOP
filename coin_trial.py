@@ -2,17 +2,12 @@ from random import random
 
 
 def coin_trial():
-    heads = 0
-    for i in range(100):
-        if random() <= 0.5:
-            heads += 1
+    heads = sum([1 for _ in range(100) if random() <= 0.5])
     return heads
 
 
 def simulate(n):
-    trials = []
-    for i in range(n):
-        trials.append(coin_trial())
+    trials = [coin_trial() for _ in range(n)]
     return sum(trials)/n
 
 
