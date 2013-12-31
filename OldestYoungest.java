@@ -7,8 +7,7 @@ public class OldestYoungest {
 	public static void main(String[] args) {
 		Scanner input = new Scanner (System.in);
 		System.out.println("How many?");
-		int n = input.nextInt();
-		String oldestAgeName = null, youngestAgeName = null;
+		int n = input.nextInt();		
 		String nameArray[] = new String[n];
 		int ageArray[] = new int[n];
 		
@@ -18,8 +17,8 @@ public class OldestYoungest {
 			ageArray[i] = input.nextInt();	
 		}
 		
-		int oldestAge = ageArray[0];
-		int youngestAge = ageArray[0];
+		int oldestAge = ageArray[0], youngestAge = ageArray[0];
+		String oldestAgeName = nameArray[0], youngestAgeName = nameArray[0];
 		for (int i = 0; i < nameArray.length; i++) {
 			if(ageArray[i] > oldestAge) {
 				oldestAge = ageArray[i];
