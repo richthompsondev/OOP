@@ -8,4 +8,4 @@ while number >= 1:
     inverted += (number % 10) * (10 ** (exponent - 1))
     exponent -= 1
     number = number // 10  # the floor division // rounds the result down to the nearest whole number
-print("Printing using elegant math: {}".format(inverted))
+print("Printing using way faster and elegant math: {}".format(inverted))
