@@ -47,11 +47,11 @@ public class Account {
 		if(this.balance >= value) {
 			this.balance =- value;
 			return true;
-		} else
-			System.out.println("Erro. Saldo insuficiente.");
-			//IllegalArgumentException error = new IllegalArgumentException();
-			//throw error;
-			return false;
+		}
+		System.out.println("Erro. Saldo insuficiente.");
+		// IllegalArgumentException error = new IllegalArgumentException()
+		// throw error
+		return false;
 	}
 	
 	
@@ -60,8 +60,7 @@ public class Account {
 			destination.depositValue(value);
 			return true;
 		}
-		else
-			System.out.println("Erro. Saldo insuficiente para transferencia.");
+		System.out.println("Erro. Saldo insuficiente para transferencia.");
 		return false;
 	}
 
