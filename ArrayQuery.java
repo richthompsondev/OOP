@@ -6,14 +6,12 @@ public class ArrayQuery {
 	
 	public static void main(String[] args) {
 		Scanner input = new Scanner(System.in);
-		int query=0, sorter = 0;
-		boolean exist=false;
 		System.out.println("Insert the number of elements");
 		int n = input.nextInt();
 		int array[] = new int[n];
 		insert(array, input); //Insertion into vector part
-		search(query, array, input, exist); //Query in vector part
-		sort(array, sorter); //Vector sort part
+		search(array, input); //Query in vector part
+		sort(array); //Vector sort part
 		input.close();
 	}
 	
@@ -24,13 +22,14 @@ public class ArrayQuery {
 		}
 	}
 	//Could be binary search
-	static void search(int query, int[] array, Scanner input, boolean exist) {
+	static void search(int[] array, Scanner input) {
+		boolean exist = false;
 		System.out.println("Search?");
-		query = input.nextInt();
+		int query = input.nextInt();
 		for(int i=0; i<array.length; i++){ 
 			if(array[i]==query) {
 				int mod100 = (i+1) % 100;
-			    	int mod10 = (i+1) % 10;
+			    int mod10 = (i+1) % 10;
 				if(mod10 == 1 && mod100 != 11)
 					System.out.println("Found in the "+(i+1)+"st position.");
 				else if(mod10 == 2 && mod100 != 12)
@@ -45,8 +44,9 @@ public class ArrayQuery {
 		if(!exist)
 			System.out.println("Not found.");
 	}
-	
-	static void sort(int[] array, int sorter) {
+	//Could use Array.sort()
+	static void sort(int[] array) {
+		int sorter = 0;
 		for(int i=0; i<array.length; i++){ 
 			if(sorter<=array[i]) {
 				sorter = array[i];
@@ -93,9 +93,7 @@ public class ArrayQuery {
 	}
 
 	private static void swap(int[] array, int i, int j) {
-		int aux = array[i];
-		array[i] = array[j];
-		array[j] = aux;
+		array[i] = (array[i] + array[j]) - (array[j] = array[i]);
 	}
 
 }
