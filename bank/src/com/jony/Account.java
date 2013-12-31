@@ -13,7 +13,7 @@ import java.util.Objects;
  * @author Jonatas Dourado
  * @version 0.1
  */
-public abstract class Account implements Authentication {
+public abstract class Account implements Authentication, Comparable<Account> {
     private Priority priority;
     private Client client;
     private int agency;
@@ -137,6 +137,12 @@ public abstract class Account implements Authentication {
     @Override
     public boolean authenticate(int password) {
         return this.authenticator.authenticate(password);
+    }
+
+    // Implementing natural order — balance sorting
+    @Override
+    public int compareTo(Account another) {
+        return Double.compare(this.balance, another.balance);
     }
 
     @Override
