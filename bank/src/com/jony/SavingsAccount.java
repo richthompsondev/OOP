@@ -1,5 +1,5 @@
 package com.jony;
 
-public class SavingsAccount extends Account {
+public class SavingsAccount /*extends Account*/ {
 
 }

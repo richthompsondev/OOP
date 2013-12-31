@@ -1,8 +1,8 @@
 package com.jony;
 
-public class CheckingAccount extends Account {
-    private final String password;
+public class CheckingAccount /*extends Account*/ {
+    //private final String password;
 
-    public CheckingAccount(String clientPasword) {
-        password = clientPasword;
+    //public CheckingAccount(String clientPasword) {
+        //password = clientPasword;
 }

@@ -1,82 +1,83 @@
 package com.jony;
 
 public class Account {
-	private int accountNumber;
-	private double balance;
-	private double limit;
-	private double loanTotal;
-	Client client = new Client();
-	
-	public int getAccountNumber() {
-		return accountNumber;
-	}
-	
-	public void setAccountNumber(int accountNumber) {
-		this.accountNumber = accountNumber;
-	}
-	
-	public double getBalance() {
-		return balance;
-	}
-	
-	public void setBalance(double balance) {
-		this.balance = balance;
-	}
+    Client client = new Client();
+    private int accountNumber;
+    private double balance;
+    private double limit;
+    private double loanTotal;
 
-	public double getLoanTotal() {
-		return loanTotal;
-	}
+    //Constructor
+    public Account(String name, int accountNumber, double balance) {
+        this.client.setName(name);
+        this.accountNumber = accountNumber;
+        this.balance = balance;
+    }
 
-	public void setLoanTotal(double loanTotal) {
-		this.loanTotal = loanTotal;
-	}
+    public int getAccountNumber() {
+        return accountNumber;
+    }
 
-	//Constructor
-	public Account(String client.name, int accountNumber, double balance) {
-		this.accountNumber = accountNumber;
-		this.balance = balance;
-	}
-	
-	synchronized boolean depositValue(double value) {
-		this.balance =+ value;
-		return true;
-	}
-	
+    public void setAccountNumber(int accountNumber) {
+        this.accountNumber = accountNumber;
+    }
 
-	synchronized boolean withdrawValue(double value) {
-		if(this.balance >= value) {
-			this.balance =- value;
-			return true;
-		}
-		System.out.println("Erro. Saldo insuficiente.");
-		// IllegalArgumentException error = new IllegalArgumentException()
-		// throw error
-		return false;
-	}
-	
-	
-	synchronized boolean transferValue(Account destination, double value) {
-		if(this.withdrawValue(value)) {
-			destination.depositValue(value);
-			return true;
-		}
-		System.out.println("Erro. Saldo insuficiente para transferencia.");
-		return false;
-	}
+    public double getBalance() {
+        return balance;
+    }
 
-	public void accountsLoan(int value){
-		int loanTotal = value;
-		this.loanTotal = this.loanTotal + loanTotal;
-		balance = balance + value;
-	}
+    public void setBalance(double balance) {
+        this.balance = balance;
+    }
 
-	void informBalance() {
-		
-	}
-	
-	void informAccType() {
-		
-	}
+    public double getLoanTotal() {
+        return loanTotal;
+    }
+
+    public void setLoanTotal(double loanTotal) {
+        this.loanTotal = loanTotal;
+    }
+
+    synchronized boolean depositValue(double value) {
+        this.balance += value;
+        return true;
+    }
+
+
+    synchronized boolean withdrawValue(double value) {
+        if (this.balance >= value) {
+            this.balance -= value;
+            return true;
+        }
+        System.out.println("Erro. Saldo insuficiente.");
+        // IllegalArgumentException error = new IllegalArgumentException()
+        // throw error
+        return false;
+    }
+
+
+    synchronized boolean transferValue(Account destination, double value) {
+        if (this.withdrawValue(value)) {
+            destination.depositValue(value);
+            return true;
+        }
+        System.out.println("Erro. Saldo insuficiente para transferencia.");
+        return false;
+    }
+
+    public void accountsLoan(int value) {
+        int loanTotal = value;
+        this.loanTotal = this.loanTotal + loanTotal;
+        balance = balance + value;
+    }
+
+    void informBalance() {
+
+    }
+
+    void informAccType() {
+
+    }
 }
 /*
 public class Banco {
