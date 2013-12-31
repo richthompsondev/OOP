@@ -46,6 +46,10 @@ public abstract class Account implements Authentication {
         this(client, agency, accountNumber, balance, 1000);
     }
 
+    public String getHolderName() {
+        return client.getName();
+    }
+
     public int getAccountNumber() {
         return accountNumber;
     }
