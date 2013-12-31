@@ -56,14 +56,17 @@ public class Main {
         //Writer dataBaseWriter = new OutputStreamWriter(outputStream);
         //BufferedWriter dataBaseBufferedWriter = new BufferedWriter(dataBaseWriter);
 
-        BufferedWriter dataBaseBufferedWriter = new BufferedWriter(new FileWriter("database.txt"));
-        dataBaseBufferedWriter.write("Teste1");
-        dataBaseBufferedWriter.newLine();
-        dataBaseBufferedWriter.newLine();
-        dataBaseBufferedWriter.write("Teste2");
+        //BufferedWriter dataBaseBufferedWriter = new BufferedWriter(new FileWriter("database.txt"));
+        
+        //PrintStream dataBasePrintStream = new PrintStream(new File("database.txt"));
+        
+        PrintWriter dataBasePrintWriter = new PrintWriter("database.txt");
+        dataBasePrintWriter.println("Teste1");
+        dataBasePrintWriter.println();
+        dataBasePrintWriter.print("Teste2");
 
         dataBaseBufferedReader.close();
-        dataBaseBufferedWriter.close();
+        dataBasePrintWriter.close();
 
         specialClient  = new SpecialClient();
         specialClient.setName("階戸瑠李");
