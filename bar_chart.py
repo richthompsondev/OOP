@@ -18,8 +18,6 @@ def main():
     sales = Counter(banana=15, tomato=4, apple=39, orange=30)
     print_ascii_bar_chart(sales, symbol="+")
     sales2 = Counter(banana=15, tomato=4, apple=39, orange=30).most_common()
-    print(sales)
-    print(sales2)
     x, y = zip(*sales2)
     plt.bar(x, y)
     plt.show()
