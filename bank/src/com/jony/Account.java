@@ -15,16 +15,17 @@ public abstract class Account implements Authentication {
 
     // Constructors
     public Account(String name, int accountNumber, double balance, double limit) {
+        if(accountNumber < 1) {
+            throw new IllegalArgumentException("Invalid account number");
+        }
+        if(balance < 0) {
+            this.balance = 0;
+            throw new IllegalArgumentException("Invalid balance");
+        }
         this.client = new Client(); //assuming each new account creates a new client
         this.client.setName(name);
         this.accountNumber = accountNumber;
-        if(balance >= 0){
-            this.balance = balance;
-        }else{
-            System.out.println("O saldo não pode ser negativo. Saldo zerado.");
-            this.balance = 0;
-        }
-        //this.balance = balance;
+        this.balance = balance;
         Account.accountsTotal++;
     }
 
