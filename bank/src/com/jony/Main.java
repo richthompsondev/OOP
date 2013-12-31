@@ -1,5 +1,4 @@
 package com.jony;
-import com.jony.model.*;
 
 import java.io.*;
 import java.util.InputMismatchException;
@@ -19,8 +18,8 @@ public class Main {
         try(Connection connection = new Connection() ){
             connection.readData();
             database();
-            login();
-            menu1();
+            //login();
+            //menu1();
         } catch (IllegalStateException exception) {
             System.err.println(exception);
             System.out.println("Connection error");
@@ -44,14 +43,27 @@ public class Main {
 
     public static int database() throws IOException {
         InputStream dataBase = new FileInputStream("database.txt");
-        Reader dataBaseStream = new InputStreamReader(dataBase);
-        BufferedReader dataBaseBuffer = new BufferedReader(dataBaseStream);
-        String line = dataBaseBuffer.readLine();
+        Reader dataBaseReader = new InputStreamReader(dataBase);
+        BufferedReader dataBaseBufferedReader = new BufferedReader(dataBaseReader);
+
+        String line = dataBaseBufferedReader.readLine();
         while (line != null) {
             System.out.println(line);
-            line = dataBaseBuffer.readLine();
+            line = dataBaseBufferedReader.readLine();
         }
-        dataBaseBuffer.close();
+
+        OutputStream outputStream = new FileOutputStream("database.txt");
+        Writer dataBaseWriter = new OutputStreamWriter(outputStream);
+        BufferedWriter dataBaseBufferedWriter = new BufferedWriter(dataBaseWriter);
+
+        dataBaseBufferedWriter.write("Teste1");
+        dataBaseBufferedWriter.newLine();
+        dataBaseBufferedWriter.newLine();
+        dataBaseBufferedWriter.write("Teste2");
+
+        dataBaseBufferedReader.close();
+        dataBaseBufferedWriter.close();
+
         specialClient  = new SpecialClient();
         specialClient.setName("階戸瑠李");
         specialClient.setCpf("01234567899");

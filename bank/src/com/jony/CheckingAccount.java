@@ -1,8 +1,4 @@
-package com.jony.model;
-
-import com.jony.InsufficientBalanceException;
-import com.jony.Taxable;
-import com.jony.model.Account;
+package com.jony;
 
 /**
  * Class representing a bank checking account
@@ -20,7 +16,7 @@ public class CheckingAccount extends Account implements Taxable {
     }
 
     @Override
-    synchronized void withdrawValue(double value) throws InsufficientBalanceException {
+    public synchronized void withdrawValue(double value) throws InsufficientBalanceException {
         double amountToWithdraw = value + 0.20;
         super.withdrawValue(amountToWithdraw);
     }

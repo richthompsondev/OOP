@@ -1,4 +1,4 @@
-package com.jony.model;
+package com.jony;
 /**
  * Class representing an address
  *

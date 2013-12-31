@@ -1,6 +1,4 @@
-package com.jony.model;
-
-import com.jony.model.Address;
+package com.jony;
 
 import java.util.Calendar;
 /**

@@ -1,8 +1,5 @@
-package com.jony.model;
+package com.jony;
 
-import com.jony.Authentication;
-import com.jony.AuthenticationUtil;
-import com.jony.model.Employee;
 /**
  * Class representing a manager role
  *

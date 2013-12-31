@@ -1,6 +1,5 @@
 package com.jony;
 
-import com.jony.model.Employee;
 /**
  * Class controlling bonuses
  *

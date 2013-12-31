@@ -1,6 +1,5 @@
-package com.jony.model;
+package com.jony;
 
-import com.jony.model.Person;
 /**
  * Abstract class representing an employee
  *

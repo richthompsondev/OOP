@@ -1,9 +1,4 @@
-package com.jony.model;
-
-import com.jony.Authentication;
-import com.jony.AuthenticationUtil;
-import com.jony.InsufficientBalanceException;
-import com.jony.Priority;
+package com.jony;
 
 import java.util.Objects;
 
