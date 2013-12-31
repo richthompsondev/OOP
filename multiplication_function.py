@@ -1,9 +1,9 @@
-# Make a sum function and use it to make a multiplication function.
-def sum(a=0, b=0): # 合計
+# Make a sum function and use it to make a multiplication function. 計算
+def sum(a=0, b=0): # たす
     return a + b
 
 
-def multiply(a=1, b=1): # 掛ける
+def multiply(a=1, b=1): # かける
     summation = 0
     if a < b:
         for i in range(a):
