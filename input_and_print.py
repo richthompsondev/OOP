@@ -6,7 +6,7 @@ a, b = input('Bora pow\n').split()  # Ler vários números na mesma linha
 a = float(a)  # No Python a entrada por comando input é sempre em string, portanto se precisa converter para outro tipo
 b = float(b)
 
-print(f'{a / b:.2f}')
+print(f"{a / b:.2f}")
 # print("{:.2f}".format(a / b)) old form
 # print("O valor da soma é {} e o valor da divisão é {}".format(a + b, a / b))
 
@@ -26,3 +26,14 @@ print(f'{a / b:.2f}')
 # 08  64  512
 # 09  81  729
 # 10 100 1000
+
+# matrix = [[i for i in range(5)] for _ in range(6)]
+# >>> matrix
+# [
+#     [0, 1, 2, 3, 4],
+#     [0, 1, 2, 3, 4],
+#     [0, 1, 2, 3, 4],
+#     [0, 1, 2, 3, 4],
+#     [0, 1, 2, 3, 4],
+#     [0, 1, 2, 3, 4]
+# ]
