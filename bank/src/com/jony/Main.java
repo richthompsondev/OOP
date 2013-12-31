@@ -52,10 +52,11 @@ public class Main {
             line = dataBaseBufferedReader.readLine();
         }
 
-        OutputStream outputStream = new FileOutputStream("database.txt");
-        Writer dataBaseWriter = new OutputStreamWriter(outputStream);
-        BufferedWriter dataBaseBufferedWriter = new BufferedWriter(dataBaseWriter);
+        //OutputStream outputStream = new FileOutputStream("database.txt");
+        //Writer dataBaseWriter = new OutputStreamWriter(outputStream);
+        //BufferedWriter dataBaseBufferedWriter = new BufferedWriter(dataBaseWriter);
 
+        BufferedWriter dataBaseBufferedWriter = new BufferedWriter(new FileWriter("database.txt"));
         dataBaseBufferedWriter.write("Teste1");
         dataBaseBufferedWriter.newLine();
         dataBaseBufferedWriter.newLine();
