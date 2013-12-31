@@ -14,7 +14,6 @@ def print_ascii_bar_chart(data, symbol="#"):
 def main():
     letters = "mississippimississippimississippimississippi"
     print_ascii_bar_chart(letters)
-    # a new counter from keyword args
     sales = Counter(banana=15, tomato=4, apple=39, orange=30)
     print_ascii_bar_chart(sales, symbol="+")
     sales2 = Counter(banana=15, tomato=4, apple=39, orange=30).most_common()
