@@ -12,3 +12,17 @@ print(f'{a / b:.2f}')
 
 # <variável> = <valor1> if (True) else <valor2>
 # output_list = [expression for var in input_list if condition]      List Comprehension
+
+# for x in range(1, 11):
+#   print(f'{x:02} {x*x:3} {x*x*x:4}')
+# Out:
+# 01   1    1
+# 02   4    8
+# 03   9   27
+# 04  16   64
+# 05  25  125
+# 06  36  216
+# 07  49  343
+# 08  64  512
+# 09  81  729
+# 10 100 1000
