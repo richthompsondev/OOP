@@ -1,8 +1,6 @@
 package com.jony;
 
-public class Employee {
-	private String name;
-	private String ID;
+public class Employee extends Person {
 	private String office;
 	private double salary;
 	
