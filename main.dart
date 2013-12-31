@@ -16,11 +16,26 @@ class MyApp extends StatelessWidget {
       home: Scaffold(
         body: SafeArea(
           child: Container(
-            color: Colors.blue,
-            child: Center(
-              child: Text('Texto dentro do container'),
-            ),
-          ),
+              color: Colors.blue,
+              child: Center(
+                child: Row(
+                  children: <Widget>[
+                    Container(
+                      height: 60,
+                      width: 60,
+                      color: Colors.red,
+                    ),
+                    SizedBox(width: 18),
+                    Container(
+                      height: 60,
+                      width: 60,
+                      color: Colors.red,
+                    ),
+                  ],
+                ),
+              )
+              // child: Text('Texto dentro do container'),
+              ),
         ),
       ),
     );
