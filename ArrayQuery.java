@@ -23,7 +23,7 @@ public class ArrayQuery {
 			array[i] = input.nextInt();
 		}
 	}
-	
+	//Could be binary search
 	static void search(int query, int[] array, Scanner input, boolean exist) {
 		System.out.println("Search?");
 		query = input.nextInt();
