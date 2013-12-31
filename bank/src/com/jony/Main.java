@@ -22,7 +22,11 @@ public class Main {
             login();
             menu1();
         } catch (IllegalStateException exception) {
+            System.err.println(exception);
             System.out.println("Connection error");
+        } catch (IOException exception) {
+            System.err.println(exception);
+            System.out.println("Reading file error");
         }
     }
     static Scanner input = new Scanner(System.in);
@@ -91,6 +95,7 @@ public class Main {
                 }
                 return 0;
             }catch (InputMismatchException | NumberFormatException exception) {
+                System.err.println(exception);
                 System.out.println("Incompatibilidade de entrada.");
             }finally {
                 input.close();
