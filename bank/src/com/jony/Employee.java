@@ -1,6 +1,6 @@
 package com.jony;
 
-public class Employee extends Person {
+public abstract class Employee extends Person {
 	private String office;
 	private double salary;
 

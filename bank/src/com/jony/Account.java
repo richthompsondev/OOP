@@ -1,6 +1,6 @@
 package com.jony;
 
-public class Account {
+public abstract class Account {
     Client client = new Client(); //assuming that each new account creates a new client
     private int accountNumber;
     private double balance;
