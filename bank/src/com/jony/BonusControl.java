@@ -1,5 +1,12 @@
 package com.jony;
 
+import com.jony.model.Employee;
+/**
+ * Class controlling bonuses
+ *
+ * @author Jonatas Dourado
+ * @version 0.1
+ */
 public class BonusControl {
     private double sum;
 

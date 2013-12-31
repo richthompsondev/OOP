@@ -4,6 +4,13 @@ import com.jony.model.*;
 import java.util.Scanner;
 import java.util.ArrayList;
 
+/**
+ * Main class simulating a menu
+ *
+ * @author Jonatas Dourado
+ * @version 0.1
+ */
+
 public class Main {
     static Scanner input = new Scanner(System.in);
     static CheckingAccount checkingAccount = new CheckingAccount();
@@ -20,7 +27,7 @@ public class Main {
 
     public static int database() {
 
-        specialClient.setName("Jo�o");
+        specialClient.setName("João");
         specialClient.setPassword("1234");
         specialClient.setBirth(22);
         specialClient.setSex('m');

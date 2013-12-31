@@ -1,5 +1,10 @@
 package com.jony;
-
+/**
+ * Class simulating an authorization to log into the system
+ *
+ * @author Jonatas Dourado
+ * @version 0.1
+ */
 public class InternalSystem {
     private int password = 2222;
 

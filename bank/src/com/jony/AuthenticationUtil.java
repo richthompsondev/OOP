@@ -1,6 +1,10 @@
 package com.jony;
-
-// For composition
+/**
+ * Class using composition for authentication
+ *
+ * @author Jonatas Dourado
+ * @version 0.1
+ */
 public class AuthenticationUtil {
     private int password;
 

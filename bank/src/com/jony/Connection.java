@@ -1,5 +1,10 @@
 package com.jony;
-
+/**
+ * Class for connection flow
+ *
+ * @author Jonatas Dourado
+ * @version 0.1
+ */
 public class Connection implements AutoCloseable{ // Because of try() with resources;
     public Connection(){
         System.out.println("Opening connection");
